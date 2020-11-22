@@ -1,6 +1,14 @@
 import React, { useState, useRef, useReducer } from "react";
-import * as mobilenet from "@tensorflow-models/mobilenet";
+import * as tf from "@tensorflow/tfjs";
 import "./App.css";
+import Main from "./mainComponent"
+import Upload from "./upload"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const machine = {
   initial: "initial",
@@ -29,16 +37,20 @@ function App() {
 
   const loadModel = async () => {
     next();
-    const model = await mobilenet.load();
+    const model = await tf.loadLayersModel('http://localhost:8000/model.json')
     setModel(model);
     next();
   };
 
   const identify = async () => {
     next();
-    const results = await model.classify(imageRef.current);
-    setResults(results);
-    next();
+    var testImage = tf.browser.fromPixels(imageRef.current).resizeBilinear([96,96])
+    testImage = tf.reshape(testImage, [1,96,96,3])
+    const results = await model.predict(testImage);
+    const value = results.arraySync();
+    console.log(value)
+    // setResults(results);
+    // next();
   };
 
   const reset = async () => {
@@ -68,29 +80,44 @@ function App() {
 
   const { showImage, showResults } = machine.states[appState];
 
+
+  // <div>
+  //     {showImage && <img src={imageURL} alt="upload-preview" ref={imageRef} />}
+  //     <input
+  //       type="file"
+  //       accept="image/*"
+  //       capture="camera"
+  //       onChange={handleUpload}
+  //       ref={inputRef}
+  //     />
+  //     {showResults && (
+  //       <ul>
+  //         {results.map(({ className, probability }) => (
+  //           <li key={className}>{`${className}: %${(probability * 100).toFixed(
+  //             2
+  //           )}`}</li>
+  //         ))}
+  //       </ul>
+  //     )}
+  //     <button onClick={actionButton[appState].action || (() => {})}>
+  //       {actionButton[appState].text}
+  //     </button>
+  //   </div>
+
   return (
-    <div>
-      {showImage && <img src={imageURL} alt="upload-preview" ref={imageRef} />}
-      <input
-        type="file"
-        accept="image/*"
-        capture="camera"
-        onChange={handleUpload}
-        ref={inputRef}
-      />
-      {showResults && (
-        <ul>
-          {results.map(({ className, probability }) => (
-            <li key={className}>{`${className}: %${(probability * 100).toFixed(
-              2
-            )}`}</li>
-          ))}
-        </ul>
-      )}
-      <button onClick={actionButton[appState].action || (() => {})}>
-        {actionButton[appState].text}
-      </button>
-    </div>
+    <Router>
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route path="/upload">
+            <Upload/>
+          </Route>
+          <Route path="/draw">
+            <div>DRAW SCREEN!!!!!!</div>
+          </Route>
+        </Switch>
+    </Router>
   );
 }
 
