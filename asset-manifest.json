@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/PokemonCNN/static/css/main.2da41573.chunk.css",
-    "main.js": "/PokemonCNN/static/js/main.af2516d4.chunk.js",
-    "main.js.map": "/PokemonCNN/static/js/main.af2516d4.chunk.js.map",
+    "main.js": "/PokemonCNN/static/js/main.7c25d3e2.chunk.js",
+    "main.js.map": "/PokemonCNN/static/js/main.7c25d3e2.chunk.js.map",
     "runtime-main.js": "/PokemonCNN/static/js/runtime-main.108603f6.js",
     "runtime-main.js.map": "/PokemonCNN/static/js/runtime-main.108603f6.js.map",
     "static/js/2.14fe2f59.chunk.js": "/PokemonCNN/static/js/2.14fe2f59.chunk.js",
     "static/js/2.14fe2f59.chunk.js.map": "/PokemonCNN/static/js/2.14fe2f59.chunk.js.map",
     "index.html": "/PokemonCNN/index.html",
-    "precache-manifest.dc6da54e0753fd03b4bf215c53aaf573.js": "/PokemonCNN/precache-manifest.dc6da54e0753fd03b4bf215c53aaf573.js",
+    "precache-manifest.efb234d5396371402e18c64095fccb34.js": "/PokemonCNN/precache-manifest.efb234d5396371402e18c64095fccb34.js",
     "service-worker.js": "/PokemonCNN/service-worker.js",
     "static/css/main.2da41573.chunk.css.map": "/PokemonCNN/static/css/main.2da41573.chunk.css.map",
     "static/js/2.14fe2f59.chunk.js.LICENSE": "/PokemonCNN/static/js/2.14fe2f59.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.108603f6.js",
     "static/js/2.14fe2f59.chunk.js",
     "static/css/main.2da41573.chunk.css",
-    "static/js/main.af2516d4.chunk.js"
+    "static/js/main.7c25d3e2.chunk.js"
   ]
 }
